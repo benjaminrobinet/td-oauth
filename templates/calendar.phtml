@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Slim 3</title>
+    <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            margin: 50px 0 0 0;
+            padding: 0;
+            width: 100%;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+        }
+
+        h1, h1 a {
+            color: #719e40;
+            letter-spacing: -3px;
+            font-family: 'Lato', sans-serif;
+            font-size: 100px;
+            font-weight: 200;
+            margin-bottom: 0;
+            text-decoration: none;
+        }
+
+        h1 a:hover{
+            text-decoration: underline;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .item {
+            width: 25%;
+            padding: 10px;
+            color: black;
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+    <a href="/calendar/add">Ajouter</a>: "Have fun with mummy" pour le 1 avril 2019
+    <div class="container">
+        <?php
+        foreach($data as $item){ ?>
+
+            <div class="item">
+                <h3><?php echo $item->summary; ?></h3>
+                <div>
+                    <?php
+                        $start = DateTime::createFromFormat(DATE_RFC3339, $item->start->dateTime);
+                        $end = DateTime::createFromFormat(DATE_RFC3339, $item->end->dateTime);
+                    ?>
+                    <span><?php echo $start->format("Y-m-d H:i"); ?></span><br/> à <br/><span><?php echo$end->format("Y-m-d H:i:s"); ?></span>
+                </div>
+            </div>
+
+        <?php } ?>
+    </div>
+</body>
+</html>

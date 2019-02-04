@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Slim 3</title>
+        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+        <style>
+            body {
+                margin: 50px 0 0 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+                color: #aaa;
+                font-size: 18px;
+            }
+
+            h1, h1 a {
+                color: #719e40;
+                letter-spacing: -3px;
+                font-family: 'Lato', sans-serif;
+                font-size: 100px;
+                font-weight: 200;
+                margin-bottom: 0;
+                text-decoration: none;
+            }
+
+            h1 a:hover{
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <h1><a href="<?php echo $url; ?>">Connexion</a></h1>
+    <?php
+        if(isset($logged_in) && $logged_in === true){
+            echo '<p>Vous êtes bien connecté. <br/><a href="./calendar">Consultez vos évènements à venir</a></p>';
+        }
+    ?>
+    </body>
+</html>
